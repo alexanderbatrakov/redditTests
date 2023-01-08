@@ -2,10 +2,14 @@ package pages;
 
 import com.codeborne.selenide.selector.ByText;
 
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
+
+    private String incorrectLoginOrPassError = "Incorrect username or password";
+    private String shortOrLongLoginError = "Username must be between 3 and 20 characters";
     public MainPage openPage() {
         open("https://www.reddit.com/");
 
@@ -41,4 +45,32 @@ public class MainPage {
         $(".header-user-dropdown").shouldHave(text(login));
         return this;
     }
+
+    public MainPage logOut (){
+    $("#email-collection-tooltip-id").click();
+    $("._2uYY-KeuYHKiwl-9aF0UiL").$(new ByText("Log Out")).click();
+        return this;
+    }
+
+    public MainPage checkIncorrectLoginError(){
+        $(".login").shouldHave(text(incorrectLoginOrPassError));
+        return this;
+    }
+    public MainPage checkShortOrLongLoginError (){
+        $(".login").shouldHave(text(shortOrLongLoginError));
+        return this;
+    }
+
+    public MainPage checkEmptyLoginError (){
+        switchTo().frame(0);
+        $("#loginUsername").shouldHave(attribute("required"));
+        return this;
+    }
+    public MainPage checkEmptyPasswordError (){
+        switchTo().frame(0);
+        $("#loginPassword").shouldHave(attribute("required"));
+        return this;
+    }
+
+
 }
