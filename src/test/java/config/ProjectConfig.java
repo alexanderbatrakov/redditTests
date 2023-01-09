@@ -3,7 +3,7 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.FIRST)
-@Config.Sources({"classpath:remote-project.properties"})
+@Config.Sources({"classpath:local-project.properties"})
 
 public interface ProjectConfig extends Config{
 

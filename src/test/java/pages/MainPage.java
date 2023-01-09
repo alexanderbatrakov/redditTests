@@ -3,8 +3,7 @@ package pages;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.selector.ByText;
 
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
@@ -13,6 +12,7 @@ public class MainPage {
     private String shortOrLongLoginError = "Username must be between 3 and 20 characters";
     public MainPage openPage() {
         open("");
+
         return this;
     }
 
@@ -23,7 +23,7 @@ public class MainPage {
     }
 
     public MainPage fillingLoginField(String login) {
-        switchTo().frame(0);
+        switchTo().frame($("._25r3t_lrPF3M6zD2YkWvZU"));
         $("#loginUsername").val(login);
 
         return this;
