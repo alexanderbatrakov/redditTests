@@ -23,7 +23,7 @@ public class MainPage {
     }
 
     public MainPage fillingLoginField(String login) {
-        switchTo().frame($("._25r3t_lrPF3M6zD2YkWvZU"));
+        switchTo().frame(1);
         $("#loginUsername").val(login);
 
         return this;
