@@ -1,6 +1,7 @@
 package tests.authorization;
 
 
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
 
 import tests.TestBase;
@@ -19,6 +20,7 @@ public class AuthorizationSuccessfulTest extends TestBase {
     void authorizationSuccessfulTest() {
         step("Open main page of Reddit", ()-> {
             mainPage.openPage();
+            Selenide.clearBrowserCookies();
         });
         step("Filling login and password fields, click on LogIn button", ()-> {
         mainPage.clickOnLogInButton()
