@@ -31,12 +31,14 @@ public class TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
 
-            TestBase.selenideUrl = projectConfig.getSelenideUrl();
+           TestBase.selenideUrl = projectConfig.getSelenideUrl();
             Configuration.remote = TestBase.selenideUrl + "wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
             Configuration.browserCapabilities = capabilities;
+
+        Configuration.timeout = 10000;
         }
 
     @AfterEach
