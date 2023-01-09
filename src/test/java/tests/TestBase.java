@@ -27,7 +27,7 @@ public class TestBase {
         Configuration.browserSize = projectConfig.getBrowserSize();
         Configuration.browser = projectConfig.getBrowser();
         Configuration.browserVersion = projectConfig.getBrowserVersion();
-        Configuration.baseUrl = projectConfig.getBaseUrl();
+        //Configuration.baseUrl = projectConfig.getBaseUrl();
         SelenideLogger.addListener("allure", new AllureSelenide());
 
 

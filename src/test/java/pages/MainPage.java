@@ -12,7 +12,7 @@ public class MainPage {
     private String shortOrLongLoginError = "Username must be between 3 and 20 characters";
 
     public MainPage openPage() {
-        open("");
+        open("https://www.reddit.com/");
         return this;
     }
 
