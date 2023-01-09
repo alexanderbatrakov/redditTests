@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static support.Attach.*;
 import static support.Attach.addVideo;
 
@@ -21,6 +22,8 @@ public class TestBase {
     private static final ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class, System.getProperties());
     @BeforeAll
     static void beforeAll() {
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
 
         Configuration.holdBrowserOpen = false;
         Configuration.browserSize = projectConfig.getBrowserSize();
