@@ -46,6 +46,7 @@ public class TestBase {
         pageSource();
         browserConsoleLogs();
         addVideo();
+        closeWebDriver();
     }
 
 }
