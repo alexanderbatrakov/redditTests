@@ -31,8 +31,8 @@ public class TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
 
-//           TestBase.selenideUrl = projectConfig.getSelenideUrl();
-//            Configuration.remote = TestBase.selenideUrl + "wd/hub";
+           TestBase.selenideUrl = projectConfig.getSelenideUrl();
+            Configuration.remote = TestBase.selenideUrl + "wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
