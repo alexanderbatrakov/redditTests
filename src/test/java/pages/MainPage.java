@@ -62,13 +62,13 @@ public class MainPage {
     }
 
     public MainPage checkEmptyLoginAttribute() {
-        switchTo().frame(0);
+        switchTo().frame($("._25r3t_lrPF3M6zD2YkWvZU"));
         $("#loginUsername").shouldHave(attribute("required"));
         return this;
     }
 
     public MainPage checkEmptyPasswordAttribute() {
-        switchTo().frame(0);
+        switchTo().frame($("._25r3t_lrPF3M6zD2YkWvZU"));
         $("#loginPassword").shouldHave(attribute("required"));
         return this;
     }
