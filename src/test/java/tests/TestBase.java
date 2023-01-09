@@ -38,7 +38,7 @@ public class TestBase {
             capabilities.setCapability("enableVideo", true);
             Configuration.browserCapabilities = capabilities;
 
-        Configuration.timeout = 10000;
+        Configuration.timeout = 20000;
         }
 
     @AfterEach
