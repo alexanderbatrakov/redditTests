@@ -23,7 +23,7 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
 
-        Configuration.holdBrowserOpen = false;
+        Configuration.holdBrowserOpen = true;
         Configuration.browserSize = projectConfig.getBrowserSize();
         Configuration.browser = projectConfig.getBrowser();
         Configuration.browserVersion = projectConfig.getBrowserVersion();
