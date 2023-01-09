@@ -47,7 +47,7 @@ public class MainPage {
 
     public MainPage logOut() {
         $("#email-collection-tooltip-id").click();
-        $("._2uYY-KeuYHKiwl-9aF0UiL").$(new ByText("Log Out")).click();
+        $("._2uYY-KeuYHKiwl-9aF0UiL _1HSQGYlfPWzs40LP4_oFi5 _2XkHtsPtFuTExJyk9JQUAp").$(new ByText("Log Out")).click();
         return this;
     }
 
