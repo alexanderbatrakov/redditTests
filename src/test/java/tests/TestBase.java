@@ -22,8 +22,6 @@ public class TestBase {
     private static final ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class, System.getProperties());
     @BeforeAll
     static void beforeAll() {
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
 
         Configuration.holdBrowserOpen = false;
         Configuration.browserSize = projectConfig.getBrowserSize();
