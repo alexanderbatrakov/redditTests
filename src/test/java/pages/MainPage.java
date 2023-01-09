@@ -10,9 +10,9 @@ public class MainPage {
 
     private String incorrectLoginOrPassError = "Incorrect username or password";
     private String shortOrLongLoginError = "Username must be between 3 and 20 characters";
+
     public MainPage openPage() {
         open("");
-
         return this;
     }
 
@@ -45,27 +45,29 @@ public class MainPage {
         return this;
     }
 
-    public MainPage logOut (){
-    $("#email-collection-tooltip-id").click();
-    $("._2uYY-KeuYHKiwl-9aF0UiL").$(new ByText("Log Out")).click();
+    public MainPage logOut() {
+        $("#email-collection-tooltip-id").click();
+        $("._2uYY-KeuYHKiwl-9aF0UiL").$(new ByText("Log Out")).click();
         return this;
     }
 
-    public MainPage checkIncorrectLoginError(){
+    public MainPage checkIncorrectLoginError() {
         $(".login").shouldHave(text(incorrectLoginOrPassError));
         return this;
     }
-    public MainPage checkShortOrLongLoginError (){
+
+    public MainPage checkShortOrLongLoginError() {
         $(".login").shouldHave(text(shortOrLongLoginError));
         return this;
     }
 
-    public MainPage checkEmptyLoginAttribute (){
+    public MainPage checkEmptyLoginAttribute() {
         switchTo().frame(0);
         $("#loginUsername").shouldHave(attribute("required"));
         return this;
     }
-    public MainPage checkEmptyPasswordAttribute (){
+
+    public MainPage checkEmptyPasswordAttribute() {
         switchTo().frame(0);
         $("#loginPassword").shouldHave(attribute("required"));
         return this;
