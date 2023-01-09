@@ -3,67 +3,109 @@ package tests.authorization;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
+import static io.qameta.allure.Allure.step;
 import static tests.TestData.*;
 
 public class AuthorizationUnsuccessfulTests extends TestBase {
 
     @Test
     void authorizationWrongLoginTest() {
-        mainPage.openPage()
-                .clickOnLogInButton()
+        step("Open main page of Reddit", ()-> {
+        mainPage.openPage();
+        });
+        step("Filling login and password fields, click on LogIn button", ()-> {
+            mainPage.clickOnLogInButton()
                 .fillingLoginField(wrongLogin())
                 .fillingPasswordField(password)
-                .clickOnLogInButtonOnFrame()
-                .checkIncorrectLoginError();
+                .clickOnLogInButtonOnFrame();
+        });
+        step("Check result of test", ()-> {
+        mainPage.checkIncorrectLoginError();
+        });
     }
 
     @Test
     void authorizationWrongPasswordTest() {
-        mainPage.openPage()
-                .clickOnLogInButton()
+        step("Open main page of Reddit", ()-> {
+        mainPage.openPage();
+        });
+        step("Filling login and password fields, click on LogIn button", ()-> {
+        mainPage.clickOnLogInButton()
                 .fillingLoginField(login)
                 .fillingPasswordField(wrongPassword)
-                .clickOnLogInButtonOnFrame()
-                .checkIncorrectLoginError();
+                .clickOnLogInButtonOnFrame();
+        });
+        step("Check result of test", ()-> {
+        mainPage.checkIncorrectLoginError();
+        });
     }
-
     @Test
     void authorizationWrongLoginAndPasswordTest() {
-        mainPage.openPage()
-                .clickOnLogInButton()
+        step("Open main page of Reddit", ()-> {
+        mainPage.openPage();
+        });
+        step("Filling login and password fields, click on LogIn button", ()-> {
+        mainPage.clickOnLogInButton()
                 .fillingLoginField(wrongLogin())
                 .fillingPasswordField(wrongPassword)
-                .clickOnLogInButtonOnFrame()
-                .checkIncorrectLoginError();
+                .clickOnLogInButtonOnFrame();
+        });
+        step("Check result of test", ()-> {
+        mainPage.checkIncorrectLoginError();
+        });
     }
     @Test
     void authorizationShortLoginTest() {
-        mainPage.openPage()
-                .clickOnLogInButton()
+        step("Open main page of Reddit", ()-> {
+        mainPage.openPage();
+        });
+        step("Filling login and password fields, click on LogIn button", ()-> {
+        mainPage.clickOnLogInButton()
                 .fillingLoginField(shortLogin())
                 .fillingPasswordField(password)
-                .clickOnLogInButtonOnFrame()
-                .checkShortOrLongLoginError();
+                .clickOnLogInButtonOnFrame();
+        });
+        step("Check result of test", ()-> {
+        mainPage.checkShortOrLongLoginError();
+        });
     }
     @Test
     void authorizationLongLoginTest() {
-        mainPage.openPage()
-                .clickOnLogInButton()
+        step("Open main page of Reddit", ()-> {
+        mainPage.openPage();
+        });
+        step("Filling login and password fields, click on LogIn button", ()-> {
+        mainPage.clickOnLogInButton()
                 .fillingLoginField(longLogin())
                 .fillingPasswordField(password)
-                .clickOnLogInButtonOnFrame()
-                .checkShortOrLongLoginError();
+                .clickOnLogInButtonOnFrame();
+        });
+        step("Check result of test", ()-> {
+        mainPage.checkShortOrLongLoginError();
+        });
     }
     @Test
     void authorizationEmptyLoginTest() {
-        mainPage.openPage()
-                .clickOnLogInButton()
-                .checkEmptyLoginError();
+        step("Open main page of Reddit", ()-> {
+        mainPage.openPage();
+        });
+        step("Click on LogIn button", ()-> {
+        mainPage.clickOnLogInButton();
+        });
+        step("Check required attribute", ()-> {
+        mainPage.checkEmptyLoginAttribute();
+        });
     }
     @Test
     void authorizationEmptyPasswordTest() {
-        mainPage.openPage()
-                .clickOnLogInButton()
-                .checkEmptyPasswordError();
+        step("Open main page of Reddit", ()-> {
+        mainPage.openPage();
+        });
+        step("Click on LogIn button", ()-> {
+        mainPage.clickOnLogInButton();
+        });
+        step("Check required attribute", ()-> {
+            mainPage.checkEmptyPasswordAttribute();
+        });
     }
 }

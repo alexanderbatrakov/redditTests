@@ -2,6 +2,7 @@ package tests;
 
 
 import com.github.javafaker.Faker;
+import config.ProjectConfig;
 import config.ProjectCredentialsConfig;
 import org.aeonbits.owner.ConfigFactory;
 

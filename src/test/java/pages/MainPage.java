@@ -11,7 +11,7 @@ public class MainPage {
     private String incorrectLoginOrPassError = "Incorrect username or password";
     private String shortOrLongLoginError = "Username must be between 3 and 20 characters";
     public MainPage openPage() {
-        open("https://www.reddit.com/");
+        open("");
 
 
         return this;
@@ -61,12 +61,12 @@ public class MainPage {
         return this;
     }
 
-    public MainPage checkEmptyLoginError (){
+    public MainPage checkEmptyLoginAttribute (){
         switchTo().frame(0);
         $("#loginUsername").shouldHave(attribute("required"));
         return this;
     }
-    public MainPage checkEmptyPasswordError (){
+    public MainPage checkEmptyPasswordAttribute (){
         switchTo().frame(0);
         $("#loginPassword").shouldHave(attribute("required"));
         return this;

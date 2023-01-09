@@ -1,11 +1,14 @@
 package tests.authorization;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.api.*;
+
 import tests.TestBase;
 
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 import static tests.TestData.login;
 import static tests.TestData.password;
 
@@ -14,17 +17,24 @@ public class AuthorizationSuccessfulTest extends TestBase {
 
     @Test
     void authorizationSuccessfulTest() {
-        mainPage.openPage()
-                .clickOnLogInButton()
+        step("Open main page of Reddit", ()-> {
+            mainPage.openPage();
+        });
+        step("Filling login and password fields, click on LogIn button", ()-> {
+        mainPage.clickOnLogInButton()
                 .fillingLoginField(login)
                 .fillingPasswordField(password)
-                .clickOnLogInButtonOnFrame()
-                .checkResultOfAuthorization(login);
+                .clickOnLogInButtonOnFrame();
+        });
+        step("Check result of test", ()-> {
+            mainPage.checkResultOfAuthorization(login);
+        });
     }
 
     @AfterAll
-    static void beforeAllAuthorizationSuccessfulTest() {
+    static void afterAllAuthorizationSuccessfulTest() {
         mainPage.logOut();
+
     }
 
 }
