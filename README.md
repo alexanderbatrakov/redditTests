@@ -5,24 +5,17 @@
 >Reddit is an American social news aggregation, content rating, and discussion website. Registered users submit content to the site such as links, text posts, images, and videos, which are then voted up or down by other members. Consists of website and mobile applications for Android and iOS. 
 
 # <a name="TableOfContents">Table of contents</a>
-+ [Description](#Description)
-+ [Tools and technologies](#Technology)
-+ [How to run](#Jenkins)
+* [Description](#Description)
+* [Tools and technologies](#Technology)
+* [Coverage of tests](#Coverage)
+* [How to run](#Jenkins)
     + [Gradle command](#GradleCommand)
+    + [Local run](Localrun)
     + [Property files](#PropertyFiles)
         + [Default property files](#PropertyFilesDefaults)
     + [Run in Jenkins](#RunInJenkins)
-+ [Telegram Notifications](#TelegramNotifications)
-+ [Test results report in Allure Report](#AllureReport)
-+ [Allure TestOps integration](#AllureTestOps)
-    + [Project in Allure TestOps](#AllureTestOpsProject)
-    + [Start a run of custom set of tests](#AllureTestOpsStartTests)
-    + [Dashboards](#Dashboards)
-    + [Defects](#Defects)
-+ [GitHub webhooks](#GithubWebhooks)
-+ [Jira integration](#Jira)
-+ [Video of running tests](#Video)
-
+* [Telegram Notifications](#TelegramNotifications)
+* [Test results report in Allure Report](#AllureReport)
 
 # <a name="Description">Description</a>
 The test project consists of Web, API and mobile(android) tests.\
@@ -47,7 +40,6 @@ A brief list of interesting facts about the project:
   <code><img width="5%" title="Allure TestOps" src="./images/icons/allure-ee-logo.svg"></code>
   <code><img width="5%" title="Github" src="./images/icons/git-logo.svg"></code>
   <code><img width="5%" title="Jenkins" src="./images/icons/jenkins-logo.svg"></code>
-  <code><img width="5%" title="Jira" src="./images/icons/jira-logo.svg"></code>
   <code><img width="5%" title="Telegram" src="./images/icons/Telegram.svg"></code>
 </p>
 
@@ -60,7 +52,7 @@ The autotests in this project are written in `Java` using `Selenide` framework.\
 `Telegram Bot` - for test results notifications.\
 `Allure TestOps` - as Test Management System.
 
-[Back to the table of contents ⬆](#TableOfContents)
+[Back to the table of contents ⬆](#Coverage)
 
 # <a name="Coverage of tests">Coverage of tests</a>
 
@@ -96,7 +88,7 @@ To rut on your own environment:
 ```bash
 gradle clean test -Denv={file name}
 ```
-## <a name="GradleCommand">Local run</a>
+## <a name="Localrun">Local run</a>
 
 Credentials (login/password) from Reddit account haven't upload at GitHub to save sensitive data you need to create property file manually and put file to `src/test/resources` with name `credentials.properties`.
 Example of credentials.properties file:
