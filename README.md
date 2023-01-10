@@ -148,8 +148,9 @@ Click on "Build with Parameters" button, after that click on "Build":
 </p>
 
 File with credentials from Reddit account has already attached.
+<p  align="center">
 <img src="images/screen/2023-01-10_17-23-21.png" alt="JenkinsBuildMainPage" width="800">
-
+</p>
 [Back to the table of contents ⬆](#TableOfContents)
 
 
