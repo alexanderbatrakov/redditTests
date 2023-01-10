@@ -2,8 +2,8 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.LoadPolicy(Config.LoadType.FIRST)
-@Config.Sources({"classpath:${env}-project.properties"})
+@Config.LoadPolicy(Config.LoadType.MERGE)
+@Config.Sources({"classpath:${env}.properties"})
 
 public interface ProjectConfig extends Config{
 
@@ -22,7 +22,7 @@ public interface ProjectConfig extends Config{
     @Key("isRemote")
     Boolean getIsRemote();
 
-    @Key("selenideUrl")
+    @Key("remoteUrl")
     String getSelenideUrl();
 }
 

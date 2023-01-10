@@ -25,12 +25,12 @@ public class TestBase {
 
         Configuration.holdBrowserOpen = false;
         Configuration.browserSize = projectConfig.getBrowserSize();
-        Configuration.browser = projectConfig.getBrowser();
-        Configuration.browserVersion = projectConfig.getBrowserVersion();
         //Configuration.baseUrl = projectConfig.getBaseUrl();
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         if (projectConfig.getIsRemote()) {
+            Configuration.browser = projectConfig.getBrowser();
+            Configuration.browserVersion = projectConfig.getBrowserVersion();
             TestBase.selenideUrl = projectConfig.getSelenideUrl();
             Configuration.remote = TestBase.selenideUrl + "wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
