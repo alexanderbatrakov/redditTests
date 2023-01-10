@@ -30,7 +30,7 @@ public class TestBase {
         //Configuration.baseUrl = projectConfig.getBaseUrl();
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-
+        if (projectConfig.getIsRemote()) {
             TestBase.selenideUrl = projectConfig.getSelenideUrl();
             Configuration.remote = TestBase.selenideUrl + "wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -39,6 +39,7 @@ public class TestBase {
             Configuration.browserCapabilities = capabilities;
 
         }
+    }
 
     @AfterEach
     public void tearDown() {
@@ -46,7 +47,7 @@ public class TestBase {
         pageSource();
         browserConsoleLogs();
         addVideo();
-        closeWebDriver();
+        //closeWebDriver();
     }
 
 }
