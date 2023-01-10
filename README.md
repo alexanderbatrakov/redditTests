@@ -52,7 +52,6 @@ The autotests in this project are written in `Java` using `Selenide` framework.\
 `Telegram Bot` - for test results notifications.\
 `Allure TestOps` - as Test Management System.
 
-[Back to the table of contents ⬆](#TableOfContents)
 
 # <a name="Coverage">Coverage of tests</a>
 
@@ -97,7 +96,6 @@ login = some_login
 password = somePassword
 ```
 
-[Back to the table of contents ⬆](#TableOfContents)
 
 ## <a name="PropertyFiles">Property files</a>
 Possible properties in a `${env}.properties` file:
@@ -117,7 +115,6 @@ isRemote=
 >- *baseUrl* - base URL for Web tests
 >- *isRemote* - flag for local/remote running
 
-[Back to the table of contents ⬆](#TableOfContents)
 
 ### <a name="PropertyFilesDefaults">Default property files</a>
 
@@ -131,7 +128,6 @@ browserVersion = 100.0
 baseUrl = https://www.reddit.com/
 isRemote = false
 ```
-[Back to the table of contents ⬆](#TableOfContents)
 
 ## <a name="RunInJenkins">Run in [Jenkins](https://jenkins.autotests.cloud/job/reddit_tests//)</a>
 Click on "Build with Parameters" button, after that click on "Build":
@@ -152,7 +148,6 @@ Telegram bot sends a report to a special telegram chat by results of each build.
 <img src="images/screen/2023-01-10_19-04-54.png" alt="TelegramNotification" width="450">
 </p>
 
-[Back to the table of contents ⬆](#TableOfContents)
 
 # <a name="AllureReport">Test results report in [Allure Report](https://jenkins.autotests.cloud/job/reddit_tests/allure/)</a>
 
@@ -183,5 +178,4 @@ Each test has artefacts:
 </p>
 
 
-[Back to the table of contents ⬆](#TableOfContents)
 
