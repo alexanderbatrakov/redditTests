@@ -3,7 +3,6 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.ProjectConfig;
-import config.ProjectCredentialsConfig;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -12,7 +11,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static support.Attach.*;
 import static support.Attach.addVideo;
 
@@ -20,6 +18,7 @@ public class TestBase {
     public static String selenideUrl;
     public static MainPage mainPage = new MainPage();
     private static final ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+
     @BeforeAll
     static void beforeAll() {
 
@@ -47,7 +46,7 @@ public class TestBase {
         pageSource();
         browserConsoleLogs();
         addVideo();
-        //closeWebDriver();
+        closeWebDriver();
     }
 
 }

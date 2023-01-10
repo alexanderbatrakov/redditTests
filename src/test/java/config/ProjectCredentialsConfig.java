@@ -4,12 +4,12 @@ import org.aeonbits.owner.Config;
 
 @Config.Sources({"classpath:credentials.properties"})
 
-public interface ProjectCredentialsConfig extends Config{
+public interface ProjectCredentialsConfig extends Config {
 
-    @Key ("login")
+    @Key("login")
     String getLogin();
 
-    @Key ("password")
+    @Key("password")
     String getPassword();
 
 }

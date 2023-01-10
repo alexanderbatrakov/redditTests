@@ -1,8 +1,6 @@
 package tests;
 
-
 import com.github.javafaker.Faker;
-import config.ProjectConfig;
 import config.ProjectCredentialsConfig;
 import org.aeonbits.owner.ConfigFactory;
 
@@ -17,7 +15,7 @@ public class TestData {
     protected final static int minLengthOfLogin = 3;
     protected final static int maxLengthOfLogin = 20;
 
-    public static String wrongLogin (){
+    public static String wrongLogin() {
         String wrongLoginPicker = faker.name().username();
         while (wrongLoginPicker.length() <= minLengthOfLogin && wrongLoginPicker.length() <= maxLengthOfLogin) {
             wrongLoginPicker = faker.name().username();
@@ -27,17 +25,18 @@ public class TestData {
 
     public static String wrongPassword = faker.internet().password();
 
-    public static String shortLogin (){
+    public static String shortLogin() {
         String shortLoginPicker = faker.name().firstName();
-        while (shortLoginPicker.length() >= minLengthOfLogin){
-          shortLoginPicker = faker.name().firstName();
+        while (shortLoginPicker.length() >= minLengthOfLogin) {
+            shortLoginPicker = faker.name().firstName();
 
         }
         return shortLoginPicker;
     }
-    public static String longLogin (){
+
+    public static String longLogin() {
         String longLoginPicker = faker.name().name();
-        while (longLoginPicker.length() <= maxLengthOfLogin){
+        while (longLoginPicker.length() <= maxLengthOfLogin) {
             longLoginPicker = faker.name().name();
 
         }

@@ -5,7 +5,7 @@ import org.aeonbits.owner.Config;
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({"classpath:${env}.properties"})
 
-public interface ProjectConfig extends Config{
+public interface ProjectConfig extends Config {
 
     @Key("browserSize")
     String getBrowserSize();
