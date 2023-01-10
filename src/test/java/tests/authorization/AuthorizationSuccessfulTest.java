@@ -33,9 +33,8 @@ public class AuthorizationSuccessfulTest extends TestBase {
         });
     }
 
-    @AfterAll
-    static void afterAllAuthorizationSuccessfulTest() {
-        getWebDriver();
+    @AfterEach
+    void afterAllAuthorizationSuccessfulTest() {
         mainPage.logOut();
 
     }
