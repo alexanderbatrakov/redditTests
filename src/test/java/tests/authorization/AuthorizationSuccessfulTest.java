@@ -9,6 +9,7 @@ import tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.qameta.allure.Allure.step;
 import static tests.TestData.login;
 import static tests.TestData.password;
@@ -34,6 +35,7 @@ public class AuthorizationSuccessfulTest extends TestBase {
 
     @AfterAll
     static void afterAllAuthorizationSuccessfulTest() {
+        getWebDriver();
         mainPage.logOut();
 
     }
