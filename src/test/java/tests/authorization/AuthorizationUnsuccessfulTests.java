@@ -1,5 +1,8 @@
 package tests.authorization;
 
+import io.qameta.allure.Owner;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
@@ -9,6 +12,9 @@ import static tests.TestData.*;
 public class AuthorizationUnsuccessfulTests extends TestBase {
 
     @Test
+    @Owner("batrakov")
+    @Tag("Web")
+    @DisplayName("Authorization with wrong login")
     void authorizationWrongLoginTest() {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();
@@ -25,6 +31,9 @@ public class AuthorizationUnsuccessfulTests extends TestBase {
     }
 
     @Test
+    @Owner("batrakov")
+    @Tag("Web")
+    @DisplayName("Authorization with wrong password")
     void authorizationWrongPasswordTest() {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();
@@ -41,6 +50,9 @@ public class AuthorizationUnsuccessfulTests extends TestBase {
     }
 
     @Test
+    @Owner("batrakov")
+    @Tag("Web")
+    @DisplayName("Authorization with wrong login and password")
     void authorizationWrongLoginAndPasswordTest() {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();
@@ -57,6 +69,9 @@ public class AuthorizationUnsuccessfulTests extends TestBase {
     }
 
     @Test
+    @Owner("batrakov")
+    @Tag("Web")
+    @DisplayName("Authorization with short login (less 3 characters)")
     void authorizationShortLoginTest() {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();
@@ -73,6 +88,9 @@ public class AuthorizationUnsuccessfulTests extends TestBase {
     }
 
     @Test
+    @Owner("batrakov")
+    @Tag("Web")
+    @DisplayName("Authorization with long login (more 20 characters)")
     void authorizationLongLoginTest() {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();
@@ -89,6 +107,9 @@ public class AuthorizationUnsuccessfulTests extends TestBase {
     }
 
     @Test
+    @Owner("batrakov")
+    @Tag("Web")
+    @DisplayName("Authorization with empty login field")
     void authorizationEmptyLoginTest() {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();
@@ -102,6 +123,9 @@ public class AuthorizationUnsuccessfulTests extends TestBase {
     }
 
     @Test
+    @Owner("batrakov")
+    @Tag("Web")
+    @DisplayName("Authorization with empty password field")
     void authorizationEmptyPasswordTest() {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();

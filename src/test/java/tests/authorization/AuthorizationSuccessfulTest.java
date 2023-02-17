@@ -1,5 +1,6 @@
 package tests.authorization;
 
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 
 import tests.TestBase;
@@ -12,6 +13,9 @@ import static tests.TestData.password;
 public class AuthorizationSuccessfulTest extends TestBase {
 
     @Test
+    @Owner("batrakov")
+    @Tag("Web")
+    @DisplayName("Successful authorization")
     void authorizationSuccessfulTest() {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();
