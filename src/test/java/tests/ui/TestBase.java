@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -8,15 +8,14 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import pages.MainPage;
+import tests.ui.pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static support.Attach.*;
-import static support.Attach.addVideo;
 
 public class TestBase {
     public static String selenideUrl;
-    public static MainPage mainPage = new MainPage();
+    public final MainPage mainPage = new MainPage();
     private static final ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class, System.getProperties());
 
     @BeforeAll

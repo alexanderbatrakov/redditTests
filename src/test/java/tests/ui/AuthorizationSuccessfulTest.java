@@ -1,9 +1,7 @@
-package tests.authorization;
+package tests.ui;
 
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
-
-import tests.TestBase;
 
 import static io.qameta.allure.Allure.step;
 import static tests.TestData.login;

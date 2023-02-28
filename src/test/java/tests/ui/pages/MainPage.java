@@ -1,4 +1,4 @@
-package pages;
+package tests.ui.pages;
 
 import com.codeborne.selenide.selector.ByText;
 
