@@ -1,21 +1,23 @@
 package tests.api;
 
 import io.restassured.response.Response;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import tests.api.pages.CreatePostPage;
-import tests.api.pages.GeneralPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static tests.TestData.title;
+import static tests.TestData.titleType;
 
 public class CreatePostTests extends TestDataApi {
     CreatePostPage createPostPage = new CreatePostPage();
-    GeneralPage generalPage = new GeneralPage();
-    String username = "Alex211621";
-    String password = "swimmer88151";
-    String clientId = "Du1kpj218PIM_i16bZuoWQ";
-    String clientSecret = "WI0dNXFzCQ0jB7a6onK0WXWiP7NUEg";
 
+@AfterAll
+    static void cleanUp() {
+        String accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
+        deletePostPage.deletePost(accessToken,createPostModelJson.getJson().getData().getName());
+    }
    @Test
    void CreatePostSuccessfulTest (){
        String accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
@@ -28,8 +30,31 @@ public class CreatePostTests extends TestDataApi {
     @Test
     void CreatePostIncorrectTokenTest (){
         String accessToken = "fdggdfgdf";
-        Response response = createPostPage.createPostError(accessToken, username);
-        int statusCode = response.getStatusCode();
-        assertEquals(401, statusCode);
+        Response response = createPostPage.createPostError(accessToken, username, title, titleType);
+        assertEquals(401, response.getStatusCode());
     }
+    @Test
+    void CreatePostUIncorrectUsername (){
+        String incorrectUsernameText = "SUBREDDIT_NOTALLOWED";
+        String accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
+        Response response = createPostPage.createPostError(accessToken, "sdsddsd", title, titleType);
+        assertEquals(incorrectUsernameText, response.path("json.errors[0][0]"));
+    }
+    @Test
+    void CreatePostNoText (){
+        String incorrectUsernameText = "NO_TEXT";
+        String title = "";
+        String accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
+        Response response = createPostPage.createPostError(accessToken, username, title, titleType);
+        assertEquals(incorrectUsernameText, response.path("json.errors[0][0]"));
+    }
+
+    @Test
+    void CreatePostNoType (){
+        String titleType = "";
+        String accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
+        Response response = createPostPage.createPostError(accessToken, username, title, titleType);
+        assertEquals(500, response.getStatusCode());
+    }
+
 }

@@ -15,7 +15,7 @@ public class Spec {
             .header("User-Agent", "MockClient/0.1 by Me");
 
     public static ResponseSpecification response = new ResponseSpecBuilder()
-            .log(LogDetail.BODY)
+            .log(LogDetail.ALL)
             .expectStatusCode(200)
             .build();
 }

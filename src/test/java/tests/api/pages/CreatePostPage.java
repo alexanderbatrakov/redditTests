@@ -22,26 +22,27 @@ public class CreatePostPage extends TestDataApi {
                 .spec(request)
                 .formParam("sr", "u_" + username.toLowerCase())
                 .formParam("api_type", "json")
-                .formParam("title", "The authorization header will b")
+                .formParam("title", "Test title")
                 .formParam("kind", "self")
-                .formParam("richtext_json", "{\"document\":[{\"e\":\"par\",\"c\":[{\"e\":\"text\",\"t\":\"The authorization header will be automatically generated when you send the request. Learn more about authorization\"}]}]}")
+                .formParam("richtext_json", "{\"document\":[{\"e\":\"par\",\"c\":[{\"e\":\"text\",\"t\":\"Test body\"}]}]}")
                 .post("https://oauth.reddit.com/api/submit")
                 .then()
                 .spec(response)
                 .extract().as(CreatePostModelJson.class);
 
     }
-    public Response createPostError(String accessToken, String username) {
+    public Response createPostError(String accessToken, String username, String title, String kind) {
         return given()
                 .auth().preemptive().oauth2(accessToken)
                 .spec(request)
                 .formParam("sr", "u_" + username.toLowerCase())
                 .formParam("api_type", "json")
-                .formParam("title", "The authorization header will b")
-                .formParam("kind", "self")
+                .formParam("title", title)
+                .formParam("kind", kind)
                 .formParam("richtext_json", "{\"document\":[{\"e\":\"par\",\"c\":[{\"e\":\"text\",\"t\":\"The authorization header will be automatically generated when you send the request. Learn more about authorization\"}]}]}")
                 .post("https://oauth.reddit.com/api/submit")
                 .then()
+                .log().body()
                 .extract().response();
     }
 }

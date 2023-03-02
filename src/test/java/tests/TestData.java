@@ -9,6 +9,7 @@ import java.util.Locale;
 public class TestData {
     private static final ProjectCredentialsConfig config = ConfigFactory.create(ProjectCredentialsConfig.class, System.getProperties());
     static Faker faker = new Faker(new Locale("en"));
+    //ui
     public static String login = config.getLogin();
     public static String password = config.getPassword();
     public static String shortLogin = " ";
@@ -42,6 +43,10 @@ public class TestData {
         }
         return longLoginPicker;
     }
+    //
+    //API
+    public static String title = faker.book().title();
+    public static String titleType = "self";
 }
 
 

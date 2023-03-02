@@ -1,11 +1,11 @@
 package tests.api.pages;
 
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import tests.api.TestDataApi;
 
 import static io.restassured.RestAssured.given;
 import static tests.api.specs.Spec.request;
-import static tests.api.specs.Spec.response;
 
 public class DeletePostPage extends TestDataApi {
 
@@ -16,16 +16,14 @@ public class DeletePostPage extends TestDataApi {
     CreatePostPage createPostPage = new CreatePostPage();
 
     @Test
-    public void deletePost() {
-
-       given()
-                .auth().preemptive().oauth2(generalPage.getAccessToken(username, password, clientId, clientSecret))
+    public Response deletePost(String accessToken, String id) {
+        return given()
+                .auth().preemptive().oauth2(accessToken)
                 .spec(request)
-                .formParam("id", generalPage.createPostAndGetThingId())
+                .formParam("id", id)
                 .post("https://oauth.reddit.com/api/del")
                 .then()
-                .spec(response); 
-
+                .log().body()
+                .extract().response();
     }
-
 }
