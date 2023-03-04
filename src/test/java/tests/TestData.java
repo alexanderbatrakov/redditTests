@@ -47,6 +47,9 @@ public class TestData {
     //API
     public static String title = faker.book().title();
     public static String titleType = "self";
+    public static String incorrectAccessToken = faker.internet().uuid();
+    public static String incorrectUsername = faker.name().username();
+    public static String articleText = faker.book().publisher();
 }
 
 

@@ -6,16 +6,9 @@ import tests.api.models.CreatePostModelJson;
 
 import static io.restassured.RestAssured.given;
 import static tests.api.specs.Spec.request;
-import static tests.api.specs.Spec.response;
+import static tests.api.specs.Spec.responseSpec;
 
 public class CreatePostPage extends TestDataApi {
-
-    String username = "Alex211621";
-    String password = "swimmer88151";
-    String clientId = "Du1kpj218PIM_i16bZuoWQ";
-    String clientSecret = "WI0dNXFzCQ0jB7a6onK0WXWiP7NUEg";
-
-
     public CreatePostModelJson createPost(String accessToken, String username) {
         return given()
                 .auth().preemptive().oauth2(accessToken)
@@ -25,9 +18,10 @@ public class CreatePostPage extends TestDataApi {
                 .formParam("title", "Test title")
                 .formParam("kind", "self")
                 .formParam("richtext_json", "{\"document\":[{\"e\":\"par\",\"c\":[{\"e\":\"text\",\"t\":\"Test body\"}]}]}")
-                .post("https://oauth.reddit.com/api/submit")
+                .when()
+                .post("/submit")
                 .then()
-                .spec(response)
+                .spec(responseSpec)
                 .extract().as(CreatePostModelJson.class);
 
     }
@@ -40,7 +34,7 @@ public class CreatePostPage extends TestDataApi {
                 .formParam("title", title)
                 .formParam("kind", kind)
                 .formParam("richtext_json", "{\"document\":[{\"e\":\"par\",\"c\":[{\"e\":\"text\",\"t\":\"The authorization header will be automatically generated when you send the request. Learn more about authorization\"}]}]}")
-                .post("https://oauth.reddit.com/api/submit")
+                .post("/submit")
                 .then()
                 .log().body()
                 .extract().response();
