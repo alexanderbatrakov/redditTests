@@ -11,8 +11,9 @@ import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static tests.TestData.articleText;
 import static tests.TestData.incorrectAccessToken;
-
-public class EditPostTests extends TestDataApi{
+@Owner("Batrakov")
+@Tag("Api")
+class EditPostTests extends TestDataApi{
     EditPostPage editPostPage = new EditPostPage();
 
     @AfterEach
@@ -21,8 +22,6 @@ public class EditPostTests extends TestDataApi{
         deletePostPage.deletePost(accessToken,createPostModelJson.getJson().getData().getName());
     }
     @Test
-    @Owner("Batrakov")
-    @Tag("Api")
     @DisplayName("Edit post successful test")
     void EditPostSuccessfulTest (){
         step("Get access token", () -> {
@@ -40,8 +39,6 @@ public class EditPostTests extends TestDataApi{
         });
     }
     @Test
-    @Owner("Batrakov")
-    @Tag("Api")
     @DisplayName("Delete post with incorrect access token test")
     void EditPostIncorrectTokenTest (){
         step("Get access token", () -> {
@@ -59,8 +56,6 @@ public class EditPostTests extends TestDataApi{
         });
     }
     @Test
-    @Owner("Batrakov")
-    @Tag("Api")
     @DisplayName("Delete post with incorrect access token")
     void EditPostNoTitleIdTest (){
         String noTitleErorr = "NO_THING_ID";

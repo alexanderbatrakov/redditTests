@@ -6,10 +6,21 @@ import org.aeonbits.owner.Config;
 
 public interface ProjectCredentialsConfig extends Config {
 
-    @Key("login")
-    String getLogin();
+    @Key("username")
+    String getUsername();
 
     @Key("password")
     String getPassword();
 
+    @Key("clientId")
+    String getClientId();
+
+    @Key("clientSecret")
+    String getClientSecret();
+
+    @Key("BSlogin")
+    String getBSlogin();
+
+    @Key("BSpassword")
+    String getBSpassword();
 }

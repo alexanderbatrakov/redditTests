@@ -28,8 +28,8 @@ public class MobileDriver implements WebDriverProvider {
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName("Android")
-                .setDeviceName("1f16964")
-                .setPlatformVersion("11")
+                .setDeviceName(projectConfig.getDeviceName())
+                .setPlatformVersion(projectConfig.getOsVersion())
                 .setApp(getAppPath())
                 .setAppPackage("com.reddit.frontpage")
                 .setAppActivity("com.reddit.frontpage.StartActivity");

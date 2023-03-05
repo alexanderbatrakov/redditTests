@@ -52,3 +52,20 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task web(type: Test) {
+    useJUnitPlatform {
+        includeTags 'Web'
+    }
+}
+
+task api(type: Test) {
+    useJUnitPlatform {
+        includeTags 'Api'
+    }
+}
+task mobile(type: Test) {
+    useJUnitPlatform {
+        includeTags 'Mobile'
+    }
+}

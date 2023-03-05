@@ -24,6 +24,20 @@ public interface ProjectConfig extends Config {
 
     @Key("remoteUrl")
     String getSelenideUrl();
+
+    @Key("appUrl")
+    String getAppUrl();
+
+    @Key("remoteBSUrl")
+    String getRemoteBSUrl();
+    @Key("deviceName")
+    String getDeviceName();
+
+    @Key("osVersion")
+    String getOsVersion();
+
+    @Key("environment")
+    String getEnvironment();
 }
 
 

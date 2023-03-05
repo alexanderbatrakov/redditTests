@@ -4,11 +4,10 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-public class SortingSearchingResultTests extends TestDataMobile {
+@Owner("Batrakov")
+@Tag("Mobile")
+class SortingSearchingResultTests extends TestDataMobile {
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Filter search result by: most relevant and all time test")
     void mostRelevantAndAllTimeTest() {
         onboardingPage.clickOnSkipOnboardingButton();
@@ -23,8 +22,6 @@ public class SortingSearchingResultTests extends TestDataMobile {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Filter search result by: most relevant and past year test")
     void mostRelevantAndPastYearTest() {
         onboardingPage.clickOnSkipOnboardingButton();
@@ -39,8 +36,6 @@ public class SortingSearchingResultTests extends TestDataMobile {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Filter search result by: top and past month test")
     void topAndPastMonthTest() {
         onboardingPage.clickOnSkipOnboardingButton();
@@ -55,8 +50,6 @@ public class SortingSearchingResultTests extends TestDataMobile {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Filter search result by: top and past week test")
     void topAndPastWeekTest() {
         onboardingPage.clickOnSkipOnboardingButton();
@@ -69,10 +62,7 @@ public class SortingSearchingResultTests extends TestDataMobile {
                 .checkOfChoosingSort("Top")
                 .checkOfChoosingTime("Past week");
     }
-
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Filter search result by: comment count and past 24 hours test")
     void commentCountAndPast24HoursTest() {
         onboardingPage.clickOnSkipOnboardingButton();
@@ -87,8 +77,6 @@ public class SortingSearchingResultTests extends TestDataMobile {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Filter search result by: comment count and past hour test")
     void commentCountAndPastHourTest() {
         onboardingPage.clickOnSkipOnboardingButton();

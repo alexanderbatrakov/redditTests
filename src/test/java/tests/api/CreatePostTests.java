@@ -11,8 +11,9 @@ import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static tests.TestData.*;
-
-public class CreatePostTests extends TestDataApi {
+@Owner("Batrakov")
+@Tag("Api")
+class CreatePostTests extends TestDataApi {
     CreatePostPage createPostPage = new CreatePostPage();
 
     @AfterAll
@@ -22,8 +23,6 @@ public class CreatePostTests extends TestDataApi {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Api")
     @DisplayName("Create post successful test")
     void CreatePostSuccessfulTest() {
         step("Get access token", () -> {
@@ -44,8 +43,6 @@ public class CreatePostTests extends TestDataApi {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Api")
     @DisplayName("Create post with incorrect access token test")
     void CreatePostIncorrectTokenTest() {
         step("Create post with incorrect access token", () -> {
@@ -57,8 +54,6 @@ public class CreatePostTests extends TestDataApi {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Api")
     @DisplayName("Create post with incorrect username")
     void CreatePostIncorrectUsername() {
         String incorrectUsernameError = "SUBREDDIT_NOEXIST";
@@ -74,8 +69,6 @@ public class CreatePostTests extends TestDataApi {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Api")
     @DisplayName("Create post with no text")
     void CreatePostNoText() {
         String noTextError = "NO_TEXT";
@@ -92,8 +85,6 @@ public class CreatePostTests extends TestDataApi {
     }
 
     @Test
-    @Owner("Batrakov")
-    @Tag("Api")
     @DisplayName("Create post with no type")
     void CreatePostNoType() {
         String noTitleType = "";

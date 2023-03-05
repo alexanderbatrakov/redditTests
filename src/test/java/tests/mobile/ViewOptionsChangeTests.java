@@ -4,11 +4,10 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-public class ViewOptionsChangeTests extends TestDataMobile{
+@Owner("Batrakov")
+@Tag("Mobile")
+class ViewOptionsChangeTests extends TestDataMobile{
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Change default view setting test")
     void changeDefaultViewTest() {
         String numberOfButton = "3";
@@ -21,8 +20,6 @@ public class ViewOptionsChangeTests extends TestDataMobile{
                 .checkSetUpOfOptions(numberOfButton,nameOfButton);
     }
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Change autoplay setting test")
     void changeAutoplayTest() {
         String numberOfButton = "4";
@@ -35,8 +32,6 @@ public class ViewOptionsChangeTests extends TestDataMobile{
                 .checkSetUpOfOptions(numberOfButton,nameOfButton);
     }
     @Test
-    @Owner("Batrakov")
-    @Tag("Mobile")
     @DisplayName("Change thumbnails setting test")
     void changeThumbnailsTest() {
         String numberOfButton = "5";

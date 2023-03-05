@@ -2,6 +2,7 @@ package tests.mobile;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import drivers.BrowserstackDriver;
 import drivers.MobileDriver;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -15,15 +16,16 @@ import tests.mobile.pages.SettingPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.TestData.projectConfig;
 
 public class TestDataMobile {
     @BeforeAll
     static void beforeAll() {
-//        if (projectConfig.getEnvironment().equals("local")) {
-//            Configuration.browser = MobileDriver.class.getName();
-//        } else if (projectConfig.getEnvironment().equals("browserStack")) {
-        Configuration.browser = MobileDriver.class.getName();
-        // }
+        if (projectConfig.getEnvironment().equals("local")) {
+            Configuration.browser = MobileDriver.class.getName();
+        } else if (projectConfig.getEnvironment().equals("browserStack")) {
+        Configuration.browser = BrowserstackDriver.class.getName();
+         }
         Configuration.browserSize = null;
     }
     @BeforeEach

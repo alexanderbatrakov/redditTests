@@ -23,7 +23,7 @@ public class TestBase {
 
         Configuration.holdBrowserOpen = false;
         Configuration.browserSize = projectConfig.getBrowserSize();
-        //Configuration.baseUrl = projectConfig.getBaseUrl();
+        Configuration.baseUrl = projectConfig.getBaseUrl();
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         if (projectConfig.getIsRemote()) {
