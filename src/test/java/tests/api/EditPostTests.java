@@ -39,7 +39,7 @@ class EditPostTests extends TestDataApi{
         });
     }
     @Test
-    @DisplayName("Delete post with incorrect access token test")
+    @DisplayName("Edit post with incorrect access token test")
     void EditPostIncorrectTokenTest (){
         step("Get access token", () -> {
         accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
@@ -56,7 +56,7 @@ class EditPostTests extends TestDataApi{
         });
     }
     @Test
-    @DisplayName("Delete post with incorrect access token")
+    @DisplayName("Edit post with no title test")
     void EditPostNoTitleIdTest (){
         String noTitleErorr = "NO_THING_ID";
         String thingId = "";
