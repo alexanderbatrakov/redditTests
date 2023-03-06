@@ -225,11 +225,15 @@ Each test has artefacts:
 >- Video
 
 ## Example video of test run from Allure report
+Web
 
 <p align="left">
   <img src="images/screen/video.gif" alt="AllureReportSuites2" width="900">
 </p>
-
+Mobile
+<p align="left">
+  <img src="images/screen/mobile.gif" alt="AllureReportSuites2" width="300">
+</p>
 
 # <a name="AllureTestOps">[Allure TestOps](https://allure.autotests.cloud/project/1886/dashboards) integration</a>
 > The link can be accessed only by authorized users.
