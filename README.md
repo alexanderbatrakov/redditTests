@@ -185,7 +185,7 @@ environment=
 >- *osVersion* - version of operating system
 >- *environment* - browserStack or local
 
-## <a name="RunInJenkins">Run in [Jenkins](https://jenkins.autotests.cloud/job/reddit_tests//)</a>
+## <a name="RunInJenkins">Run in [Jenkins](https://jenkins.autotests.cloud/job/reddit_tests/)</a>
 
 Click on "Build with Parameters" button, choose parameters, after that click on "Build":
 <p  align="center">
