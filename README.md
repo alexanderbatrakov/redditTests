@@ -8,17 +8,22 @@
 
 # <a name="TableOfContents">Table of contents</a>
 
-* [Description](#Description)
-* [Tools and technologies](#Technology)
-* [Coverage of tests](#Coverage)
-* [How to run](#Jenkins)
++ [Description](#Description)
++ [Tools and technologies](#Technology)
++ [Coverage of tests](#)
+    + [UI tests](#)
+    + [Mobile tests](#)
+    + [API test](#)
++ [How to run](#Jenkins)
     + [Gradle command](#GradleCommand)
-    + [Local run](Localrun)
-    + [Property files](#PropertyFiles)
-        + [Default property files](#PropertyFilesDefaults)
+    + [Local run](#GradleCommand)
     + [Run in Jenkins](#RunInJenkins)
-* [Telegram Notifications](#TelegramNotifications)
-* [Test results report in Allure Report](#AllureReport)
++ [Telegram Notifications](#TelegramNotifications)
++ [Test results report in Allure Report](#AllureReport)
++ [Allure TestOps integration](#AllureTestOps)
+    + [Project in Allure TestOps](#AllureTestOpsProject)
+    + [Start a run of custom set of tests](#AllureTestOpsStartTests)
+    + [Dashboards](#Dashboards)
 
 # <a name="Description">Description</a>
 
