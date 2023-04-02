@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 @Owner("Batrakov")
 @Tag("Mobile")
-class ViewOptionsChangeTests extends TestDataMobile{
+class ViewOptionsChangeTests extends BaseMobileTest {
     @Test
     @DisplayName("Change default view setting test")
     void changeDefaultViewTest() {

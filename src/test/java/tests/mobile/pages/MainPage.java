@@ -9,10 +9,10 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static org.openqa.selenium.By.id;
 
 public class MainPage {
-    public static final SelenideElement searchButton = $(id("com.reddit.frontpage:id/feed_control_search_icon"));
-    public static final SelenideElement searchField = $(id("com.reddit.frontpage:id/search"));
-    public static final SelenideElement settingsButton = $(id("com.reddit.frontpage:id/drawer_nav_settings"));
-    public static final SelenideElement profileButton = $(id("com.reddit.frontpage:id/inner_user_icon"));
+    public final SelenideElement searchButton = $(id("com.reddit.frontpage:id/feed_control_search_icon"));
+    public final SelenideElement searchField = $(id("com.reddit.frontpage:id/search"));
+    public final SelenideElement settingsButton = $(id("com.reddit.frontpage:id/drawer_nav_settings"));
+    public final SelenideElement profileButton = $(id("com.reddit.frontpage:id/inner_user_icon"));
 
     @Step("Click on Skip onboarding button")
     public MainPage clickOnSearchButton() {

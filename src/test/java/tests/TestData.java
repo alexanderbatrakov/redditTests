@@ -1,7 +1,8 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import config.ProjectConfig;
+import config.MobileConfig;
+import config.WebConfig;
 import config.ProjectCredentialsConfig;
 import org.aeonbits.owner.ConfigFactory;
 
@@ -9,12 +10,12 @@ import java.util.Locale;
 
 public class TestData {
     public static final ProjectCredentialsConfig config = ConfigFactory.create(ProjectCredentialsConfig.class, System.getProperties());
-    public static ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+    public static final WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
+    public static final  MobileConfig mobileConfig  = ConfigFactory.create(MobileConfig.class, System.getProperties());
     static Faker faker = new Faker(new Locale("en"));
     //ui
     public static String login = config.getUsername();
     public static String password = config.getPassword();
-    public static String shortLogin = " ";
     protected final static int minLengthOfLogin = 3;
     protected final static int maxLengthOfLogin = 20;
 

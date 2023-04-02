@@ -88,6 +88,13 @@ The autotests in this project are written in `Java` using `Selenide` framework.\
 + authorization with long login (more 20 characters)
 + authorization with empty login field
 + authorization with empty password field
++ change topic to Gaming
++ change topic to Sports
++ change topic to Business
++ change topic to Crypto
++ change topic to Television
++ change topic to Celebrity
++ change feed to Popular
 
 ### <a name="Mobile tests">Mobile tests</a>
 + filter search result by: most relevant and all time test

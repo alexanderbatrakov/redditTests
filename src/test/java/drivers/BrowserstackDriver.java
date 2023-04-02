@@ -1,7 +1,6 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.ProjectConfig;
 import config.ProjectCredentialsConfig;
 import lombok.SneakyThrows;
 import org.aeonbits.owner.ConfigFactory;
@@ -14,8 +13,9 @@ import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static tests.TestData.mobileConfig;
+
 public class BrowserstackDriver implements WebDriverProvider {
-    private static final ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class, System.getProperties());
     private static final ProjectCredentialsConfig config = ConfigFactory.create(ProjectCredentialsConfig.class, System.getProperties());
     @SneakyThrows
     @Nonnull
@@ -28,11 +28,11 @@ public class BrowserstackDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("browserstack.user", config.getBSlogin());
         mutableCapabilities.setCapability("browserstack.key", config.getBSpassword());
 
-        mutableCapabilities.setCapability("app", projectConfig.getAppUrl());
+        mutableCapabilities.setCapability("app", mobileConfig.getAppUrl());
 
         // Specify device and os_version for testing
-        mutableCapabilities.setCapability("device", projectConfig.getDeviceName());
-        mutableCapabilities.setCapability("os_version", projectConfig.getOsVersion());
+        mutableCapabilities.setCapability("device", mobileConfig.getDeviceName());
+        mutableCapabilities.setCapability("os_version", mobileConfig.getOsVersion());
 
         // Set other BrowserStack capabilities
         mutableCapabilities.setCapability("project", "First Java Project");
@@ -46,7 +46,7 @@ public class BrowserstackDriver implements WebDriverProvider {
 
     public static URL getBrowserstackUrl() {
         try {
-            return new URL(projectConfig.getRemoteBSUrl());
+            return new URL(mobileConfig.getRemoteBSUrl());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

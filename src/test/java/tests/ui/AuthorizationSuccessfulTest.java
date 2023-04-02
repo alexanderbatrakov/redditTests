@@ -1,7 +1,6 @@
 package tests.ui;
 
 import io.qameta.allure.Owner;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -21,20 +20,14 @@ public class AuthorizationSuccessfulTest extends TestBase {
             mainPage.openPage();
         });
         step("Filling login and password fields, click on LogIn button", () -> {
-            mainPage.clickOnLogInButton()
-                    .fillingLoginField(login)
-                    .fillingPasswordField(password)
+            mainPage.clickOnLogInButton();
+            authorizationModalPage.setLogin(login)
+                    .setPassword(password)
                     .clickOnLogInButtonOnFrame();
         });
         step("Check result of test", () -> {
-            mainPage.checkResultOfAuthorization(login);
+            authorizationModalPage.checkResultOfAuthorization(login);
         });
-    }
-
-    @AfterEach
-    void afterAllAuthorizationSuccessfulTest() {
-        mainPage.logOut();
-
     }
 
 }

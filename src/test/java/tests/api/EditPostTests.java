@@ -5,72 +5,79 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.api.pages.EditPostPage;
+import tests.api.models.CreatePostModelJson;
+import tests.api.models.editPostModels.EditPostModel;
+import tests.api.userApi.EditPostApi;
 
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static tests.TestData.articleText;
-import static tests.TestData.incorrectAccessToken;
+import static tests.TestData.*;
+import static tests.api.TestDataApi.password;
+import static tests.api.TestDataApi.*;
+
 @Owner("Batrakov")
 @Tag("Api")
-class EditPostTests extends TestDataApi{
-    EditPostPage editPostPage = new EditPostPage();
+class EditPostTests {
+    EditPostApi editPostApi = new EditPostApi();
 
     @AfterEach
     void cleanUp() {
-        String accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
-        deletePostPage.deletePost(accessToken,createPostModelJson.getJson().getData().getName());
+        String accessToken = GENERAL_API.getAccessToken(username, password, clientId, clientSecret);
+        DELETE_POST_API.deletePost(accessToken, createPostModelJson.getJson().getData().getName());
     }
+
     @Test
     @DisplayName("Edit post successful test")
-    void EditPostSuccessfulTest (){
+    void editPostSuccessfulTest() {
         step("Get access token", () -> {
-        accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
+            accessToken = GENERAL_API.getAccessToken(username, password, clientId, clientSecret);
         });
         step("Create post", () -> {
-        createPostModelJson = createPostPage.createPost(accessToken, username);
+            createPostModelJson = CREATE_POST_API.createPost(accessToken, username, title, titleType).extract().as(CreatePostModelJson.class);
         });
         step("Edit post", () -> {
-        String thingId = createPostModelJson.getJson().getData().getName();
-        editPostModel = editPostPage.editPost(accessToken, thingId, articleText);
+            String thingId = createPostModelJson.getJson().getData().getName();
+            editPostModel = editPostApi.editPost(accessToken, thingId, articleText).extract().as(EditPostModel.class);
         });
         step("Check that article test was edited", () -> {
-        assertEquals(articleText, editPostModel.getSelftext());
+            assertEquals(articleText, editPostModel.getSelftext());
         });
     }
+
     @Test
     @DisplayName("Edit post with incorrect access token test")
-    void EditPostIncorrectTokenTest (){
+    void editPostIncorrectTokenTest() {
         step("Get access token", () -> {
-        accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
+            accessToken = GENERAL_API.getAccessToken(username, password, clientId, clientSecret);
         });
         step("Create post", () -> {
-        createPostModelJson = createPostPage.createPost(accessToken, username);
+            createPostModelJson = CREATE_POST_API.createPost(accessToken, username, title, titleType).extract().as(CreatePostModelJson.class);
         });
         step("Edit post with incorrect access token", () -> {
-        String thingId = createPostModelJson.getJson().getData().getName();
-        response = editPostPage.editPostError(incorrectAccessToken, thingId, articleText);
+            String thingId = createPostModelJson.getJson().getData().getName();
+            response = editPostApi.editPost(incorrectAccessToken, thingId, articleText).extract().response();
         });
         step("Check response status code", () -> {
-        assertEquals(401, response.getStatusCode());
+            assertEquals(401, response.getStatusCode());
         });
     }
+
     @Test
     @DisplayName("Edit post with no title test")
-    void EditPostNoTitleIdTest (){
+    void editPostNoTitleIdTest() {
         String noTitleErorr = "NO_THING_ID";
         String thingId = "";
         step("Get access token", () -> {
-        accessToken = generalPage.getAccessToken(username, password, clientId, clientSecret);
+            accessToken = GENERAL_API.getAccessToken(username, password, clientId, clientSecret);
         });
         step("Create post", () -> {
-        createPostModelJson = createPostPage.createPost(accessToken, username);
+            createPostModelJson = CREATE_POST_API.createPost(accessToken, username, title, titleType).extract().as(CreatePostModelJson.class);
         });
         step("Edit post with no title id", () -> {
-        response = editPostPage.editPostError(accessToken, thingId, articleText);
+            response = editPostApi.editPost(accessToken, thingId, articleText).extract().response();
         });
         step("Check error text", () -> {
-        assertEquals(noTitleErorr, response.path("json.errors[0][0]"));
+            assertEquals(noTitleErorr, response.path("json.errors[0][0]"));
         });
     }
 }

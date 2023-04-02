@@ -4,95 +4,46 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static io.qameta.allure.Allure.step;
 import static tests.TestData.*;
+
 @Owner("batrakov")
 @Tag("Web")
 public class AuthorizationUnsuccessfulTests extends TestBase {
 
-    @Test
-    @DisplayName("Authorization with wrong login")
-    void authorizationWrongLoginTest() {
-        step("Open main page of Reddit", () -> {
-            mainPage.openPage();
-        });
-        step("Filling login and password fields, click on LogIn button", () -> {
-            mainPage.clickOnLogInButton()
-                    .fillingLoginField(wrongLogin())
-                    .fillingPasswordField(password)
-                    .clickOnLogInButtonOnFrame();
-        });
-        step("Check result of test", () -> {
-            mainPage.checkIncorrectLoginError();
-        });
+    private static String incorrectLoginOrPassError = "Incorrect username or password";
+    private static String shortOrLongLoginError = "Username must be between 3 and 20 characters";
+
+    static Stream<Arguments> testDataForUnsuccessfulTests() {
+        return Stream.of(
+                Arguments.of(wrongLogin(), password, incorrectLoginOrPassError, "Authorization with wrong login"),
+                Arguments.of(login, wrongPassword, incorrectLoginOrPassError, "Authorization with wrong password"),
+                Arguments.of(wrongLogin(), wrongPassword, incorrectLoginOrPassError, "authorization with wrong login and password"),
+                Arguments.of(shortLogin(), password, shortOrLongLoginError, "Authorization with short login (less 3 characters)"),
+                Arguments.of(longLogin(), password, shortOrLongLoginError, "Authorization with long login (more 20 characters)")
+        );
     }
 
-    @Test
-    @DisplayName("Authorization with wrong password")
-    void authorizationWrongPasswordTest() {
+    @ParameterizedTest(name = "{3}")
+    @MethodSource("testDataForUnsuccessfulTests")
+    void authorizationWrongLoginTest(String login, String password, String textOfError, String nameOfTest) {
         step("Open main page of Reddit", () -> {
             mainPage.openPage();
         });
-        step("Filling login and password fields, click on LogIn button", () -> {
-            mainPage.clickOnLogInButton()
-                    .fillingLoginField(login)
-                    .fillingPasswordField(wrongPassword)
+        step("Filling and password fields, click on LogIn button", () -> {
+            mainPage.clickOnLogInButton();
+            authorizationModalPage.setLogin(login)
+                    .setPassword(password)
                     .clickOnLogInButtonOnFrame();
         });
         step("Check result of test", () -> {
-            mainPage.checkIncorrectLoginError();
-        });
-    }
-
-    @Test
-    @DisplayName("Authorization with wrong login and password")
-    void authorizationWrongLoginAndPasswordTest() {
-        step("Open main page of Reddit", () -> {
-            mainPage.openPage();
-        });
-        step("Filling login and password fields, click on LogIn button", () -> {
-            mainPage.clickOnLogInButton()
-                    .fillingLoginField(wrongLogin())
-                    .fillingPasswordField(wrongPassword)
-                    .clickOnLogInButtonOnFrame();
-        });
-        step("Check result of test", () -> {
-            mainPage.checkIncorrectLoginError();
-        });
-    }
-
-    @Test
-    @DisplayName("Authorization with short login (less 3 characters)")
-    void authorizationShortLoginTest() {
-        step("Open main page of Reddit", () -> {
-            mainPage.openPage();
-        });
-        step("Filling login and password fields, click on LogIn button", () -> {
-            mainPage.clickOnLogInButton()
-                    .fillingLoginField(shortLogin())
-                    .fillingPasswordField(password)
-                    .clickOnLogInButtonOnFrame();
-        });
-        step("Check result of test", () -> {
-            mainPage.checkShortOrLongLoginError();
-        });
-    }
-
-    @Test
-    @DisplayName("Authorization with long login (more 20 characters)")
-    void authorizationLongLoginTest() {
-        step("Open main page of Reddit", () -> {
-            mainPage.openPage();
-        });
-        step("Filling login and password fields, click on LogIn button", () -> {
-            mainPage.clickOnLogInButton()
-                    .fillingLoginField(longLogin())
-                    .fillingPasswordField(password)
-                    .clickOnLogInButtonOnFrame();
-        });
-        step("Check result of test", () -> {
-            mainPage.checkShortOrLongLoginError();
+            authorizationModalPage.checkIncorrectLoginError(textOfError);
         });
     }
 
@@ -106,7 +57,7 @@ public class AuthorizationUnsuccessfulTests extends TestBase {
             mainPage.clickOnLogInButton();
         });
         step("Check required attribute", () -> {
-            mainPage.checkEmptyLoginAttribute();
+            authorizationModalPage.checkEmptyLoginAttribute();
         });
     }
 
@@ -120,7 +71,7 @@ public class AuthorizationUnsuccessfulTests extends TestBase {
             mainPage.clickOnLogInButton();
         });
         step("Check required attribute", () -> {
-            mainPage.checkEmptyPasswordAttribute();
+            authorizationModalPage.checkEmptyPasswordAttribute();
         });
     }
 }

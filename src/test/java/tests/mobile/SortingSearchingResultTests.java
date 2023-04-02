@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 @Owner("Batrakov")
 @Tag("Mobile")
-class SortingSearchingResultTests extends TestDataMobile {
+class SortingSearchingResultTests extends BaseMobileTest {
     @Test
     @DisplayName("Filter search result by: most relevant and all time test")
     void mostRelevantAndAllTimeTest() {

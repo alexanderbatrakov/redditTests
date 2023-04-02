@@ -7,9 +7,10 @@ import static com.codeborne.selenide.Selenide.$;
 import static org.openqa.selenium.By.xpath;
 
 public class OnboardingPage {
-    public static final SelenideElement pageTitle = $(xpath("/hierarchy//android.widget.Button"));
+    public final SelenideElement pageTitle = $(xpath("/hierarchy//android.widget.Button"));
+
     @Step("Click on Skip onboarding button")
-    public void clickOnSkipOnboardingButton(){
+    public void clickOnSkipOnboardingButton() {
         pageTitle.click();
     }
 

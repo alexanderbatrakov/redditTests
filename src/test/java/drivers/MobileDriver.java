@@ -1,11 +1,9 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.ProjectConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import lombok.SneakyThrows;
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 
@@ -15,9 +13,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static io.appium.java_client.remote.AutomationName.ANDROID_UIAUTOMATOR2;
+import static tests.TestData.mobileConfig;
 
 public class MobileDriver implements WebDriverProvider {
-    private static final ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class, System.getProperties());
 
     @SneakyThrows
     @Nonnull
@@ -28,8 +26,8 @@ public class MobileDriver implements WebDriverProvider {
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName("Android")
-                .setDeviceName(projectConfig.getDeviceName())
-                .setPlatformVersion(projectConfig.getOsVersion())
+                .setDeviceName(mobileConfig.getDeviceName())
+                .setPlatformVersion(mobileConfig.getOsVersion())
                 .setApp(getAppPath())
                 .setAppPackage("com.reddit.frontpage")
                 .setAppActivity("com.reddit.frontpage.StartActivity");

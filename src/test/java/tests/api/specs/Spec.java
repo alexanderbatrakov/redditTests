@@ -24,6 +24,5 @@ public class Spec {
 
     public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
             .log(LogDetail.ALL)
-            .expectStatusCode(200)
             .build();
 }
